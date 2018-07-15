@@ -14,4 +14,4 @@ if(![System.IO.File]::Exists($output)){
 }
 
 $videoLibraryPath = $env:userprofile + "\Videos\"
-$PSScriptRoot + "\WinNFSd.exe " + $videoLibraryPath + " /videos"
+& "$PSScriptRoot\WinNFSd.exe" $videoLibraryPath " /videos"
