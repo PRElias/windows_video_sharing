@@ -1,23 +1,33 @@
-Import-Module BitsTransfer
-[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" #Convince Powershell to talk to sites with different versions of TLS
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$url = "https://github.com/winnfsd/winnfsd/releases/download/2.4.0/WinNFSd.exe"
+$output = "$PSScriptRoot\WinNFSd.exe"
+# $wc = New-Object System.Net.WebClient
+# $wc.DownloadFile($url, $output)
+#OR
+# (New-Object System.Net.WebClient).DownloadFile($url, $output)
 
-$downloadFolder = "$PSScriptRoot\download\"
-New-Item -ItemType Directory -Force -Path $downloadFolder
+Invoke-WebRequest -Uri $url -OutFile $output
 
-Get-Content download.json | ConvertFrom-Json | Select-Object -expand downloads | ForEach-Object {
+# New-Item -ItemType Directory -Force -Path $PSScriptRoot
 
-    $url = $_.url
-    $file = $_.file
-    $output = $downloadFolder + $file
+# Get-Content download.json | ConvertFrom-Json | Select-Object -expand downloads | ForEach-Object {
 
-    if(![System.IO.File]::Exists($output)){
+#     $url = $_.url
+#     $file = $_.file
+#     $output = $downloadFolder + $file
 
-        Write-Host $file "arquivo não encontrado...baixando."
-        Start-BitsTransfer -Source $url -Destination $output
+#     if(![System.IO.File]::Exists($output)){
 
-    } else {
+#         Write-Host $file "Arquivo não encontrado...baixando."
+#         Start-BitsTransfer -Source $url -Destination $output
 
-        Write-Host $file "Arquivo já existe...pulando download."
+#     } else {
 
-    }
-}
+#         Write-Host $file "Arquivo já existe...pulando download."
+
+#     }
+# }
+
+$videoLibraryPath = $env:userprofile + "\Videos\"
+
+$PSScriptRoot + "\WinNFSd.exe " + $videoLibraryPath + " /videos"
