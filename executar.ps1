@@ -1,3 +1,11 @@
+$ip = get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
+
+Write-Host #############################
+Write-Host #############################
+Write-Host "IP: " $ip.ipaddress[0] 
+Write-Host #############################
+Write-Host #############################
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $url = "https://github.com/winnfsd/winnfsd/releases/download/2.4.0/WinNFSd.exe"
 $output = "$PSScriptRoot\WinNFSd.exe"
