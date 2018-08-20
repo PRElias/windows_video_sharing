@@ -3,12 +3,12 @@ Este pequeno projeto utiliza o [WinNFSd](https://github.com/winnfsd/winnfsd) par
 
 1. Faça o download (descompacte o arquivo) ou clone o repositório.
 
-2. Configure sua pasta de vídeos, editando o arquivo executar.ps1 com um editor de textos.
+2. Coloque o conteúdo, mantendo a pasta original, na pasta que deseja compartilhar.
 
 3. Execute o script conforme imagem abaixo:
 
 ![](https://github.com/PRElias/images-gifs-readme/raw/master/executando_script.png?raw=true)
 
-(Isto baixará todas as dependências e iniciará o servidor)
+(Isto baixará todas as dependências e iniciará o servidor, só fazendo o download uma única vez)
 
-4. No KODI, adicione a fonte de vídeo, procurando pelo protocolo NFS o IP do seu servidor.
+4. No KODI, adicione a fonte de vídeo, procurando pelo protocolo NFS o IP do seu servidor (estará na janela do Powershell).

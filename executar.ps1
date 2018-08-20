@@ -21,16 +21,8 @@ if(![System.IO.File]::Exists($output)){
 
 }
 
-#### Configurando a pasta de vídeos ####
-
-# Infelizmente não funcionou usar uma biblioteca do Windows
-#$videoLibraryPath = $env:userprofile + 'AppData\Roaming\Microsoft\Windows\Libraries\Videos.library-ms'
-
-# Use esse caminho se você usar o local padrão do Windows para guardar seus vídeos
-#$videoLibraryPath = $env:userprofile + "\Videos\"
-
-# Informe um local customizado de vídeos
-$videoLibraryPath = "E:\"
+# Recupera a pasta atual como local de vídeos
+$videoLibraryPath = Split-Path -Path (Get-Location).Path -Parent
 
 ########################################
 
